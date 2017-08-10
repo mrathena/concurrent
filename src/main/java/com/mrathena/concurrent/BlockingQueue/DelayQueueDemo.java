@@ -12,24 +12,24 @@ import java.util.concurrent.TimeUnit;
 public class DelayQueueDemo {
 
 	public static void main(String[] args) {
-        try {  
-            ExecutorService es = Executors.newCachedThreadPool();  
-            DelayQueue<DelayTask> queue = new DelayQueue<DelayTask>();  
-            Random rand = new Random();  
-            // add 20's DelayTask to DelayQueue  
-            for (int i = 0; i < 20; i++) {  
-                queue.add(new DelayTask(rand.nextInt(500)));  
-            }  
-            EndTask endTaks = new EndTask(501);  
-            // add endtask to DelayQueue, it's time is 50001 to ensure will be  
-            // execute at the end of queue  
-            queue.add(endTaks);  
-            es.execute(new DelayConsumer(queue));  
-            TimeUnit.SECONDS.sleep(1);  
-            es.shutdownNow();  
-        } catch (InterruptedException e) {  
-            e.printStackTrace();  
-        } 
+		try {
+			ExecutorService es = Executors.newCachedThreadPool();
+			DelayQueue<DelayTask> queue = new DelayQueue<DelayTask>();
+			Random rand = new Random();
+			// add 20's DelayTask to DelayQueue
+			for (int i = 0; i < 20; i++) {
+				queue.add(new DelayTask(rand.nextInt(500)));
+			}
+			EndTask endTaks = new EndTask(501);
+			// add endtask to DelayQueue, it's time is 50001 to ensure will be
+			// execute at the end of queue
+			queue.add(endTaks);
+			es.execute(new DelayConsumer(queue));
+			TimeUnit.SECONDS.sleep(1);
+			es.shutdownNow();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
