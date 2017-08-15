@@ -5,12 +5,11 @@ public class WaitAndNotify extends Thread {
 	@Override
 	public void run() {
 		System.out.println("start");
-		synchronized (this) { // wait/notify/notifyAll use the same
-								// synchronization resource
+		synchronized (this) { // wait/notify/notifyAll use the same synchronization resource
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
-				e.printStackTrace(); // notify won't throw exception
+				e.printStackTrace();
 			}
 		}
 	}

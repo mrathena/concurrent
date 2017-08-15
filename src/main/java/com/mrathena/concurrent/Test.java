@@ -1,34 +1,44 @@
 package com.mrathena.concurrent;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
+
+import com.mrathena.concurrent.tool.ThreadKit;
 
 public class Test {
 
+	static CyclicBarrier c = new CyclicBarrier(2, new A());
+
 	public static void main(String[] args) {
-		try {
-			int count = 10000;// 创建的子线程数
-			CountDownLatch latch = new CountDownLatch(count);
-			Map<String, String> map = new HashMap<>();
-//			Map<String, String> map = new ConcurrentHashMap<>();
-			for (int i = 0; i < count; i++) {
-				String key = i + "";
-				String threadName = "[" + i + "]";
-				new Thread(new Runnable() {
-					@Override
-					public void run() {
-						map.put(key, threadName);
-						latch.countDown();
-					}
-				}, threadName).start();
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					ThreadKit.sleep(1000);
+					System.out.println(1);
+					c.await();
+				} catch (Exception e) {
+
+				}
 			}
-			latch.await();// 主线程等待
-			System.out.println(map.size());
+		}).start();
+
+		try {
+			ThreadKit.sleep(2000);
+			System.out.println(2);
+			c.await();
 		} catch (Exception e) {
-			e.printStackTrace();
+
 		}
+	}
+
+	static class A implements Runnable {
+
+		@Override
+		public void run() {
+			System.out.println(3);
+		}
+
 	}
 
 }
