@@ -12,7 +12,22 @@ import com.mrathena.concurrent.tool.ThreadKit;
 public class ExecutorServiceDemo {
 	
 	// 接口: ExecutorService
-	// 方法: 
+	// 方法: submit(Runnable task),
+	// 方法: submit(Runnable task, T result)
+	// 方法: submit(Callable<T> task)
+	// 方法: invokeAll(Collection<? extends Callable<T>> tasks) 
+	// 方法: invokeAll(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit)
+	// 方法: invokeAny(Collection<? extends Callable<T>> tasks)
+	// 方法: invokeAny(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit)
+	// 方法: shutdown()
+	// 方法: shutdownNow()
+	// 方法: isShutdown()
+	// 方法: isTerminated()
+	// 方法: awaitTermination(long timeout, TimeUnit unit)
+	
+	// 父接口: Executor
+	// 子接口: ScheduledExecutorService
+	// 实现类: AbstractExecutorService, ScheduledThreadPoolExecutor, ThreadPoolExecutor
 
 	public static void main(String[] args) {
 		try {
