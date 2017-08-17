@@ -1,8 +1,8 @@
-package com.mrathena.concurrent.basic;
+package com.mrathena.concurrent;
 
 import java.util.concurrent.CyclicBarrier;
 
-public class CyclicBarrierUsage extends Thread {
+public class CyclicBarrierDemo extends Thread {
 
 	private static CyclicBarrier barrier = new CyclicBarrier(6, new Thread() {
 
@@ -16,7 +16,7 @@ public class CyclicBarrierUsage extends Thread {
 	});
 	private final int sleepMilSecs;
 
-	public CyclicBarrierUsage(int sleepMilSecs) {
+	public CyclicBarrierDemo(int sleepMilSecs) {
 		this.sleepMilSecs = sleepMilSecs;
 	}
 
@@ -30,11 +30,11 @@ public class CyclicBarrierUsage extends Thread {
 	}
 
 	public static void main(String[] args) {
-		new CyclicBarrierUsage(2000).start();
-		new CyclicBarrierUsage(4000).start();
-		new CyclicBarrierUsage(2100).start();
-		new CyclicBarrierUsage(3000).start();
-		new CyclicBarrierUsage(1000).start();
-		new CyclicBarrierUsage(5000).start();
+		new CyclicBarrierDemo(2000).start();
+		new CyclicBarrierDemo(4000).start();
+		new CyclicBarrierDemo(2100).start();
+		new CyclicBarrierDemo(3000).start();
+		new CyclicBarrierDemo(1000).start();
+		new CyclicBarrierDemo(5000).start();
 	}
 }

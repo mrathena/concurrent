@@ -1,10 +1,10 @@
-package com.mrathena.concurrent.basic;
+package com.mrathena.concurrent;
 
 import java.util.concurrent.Exchanger;
 
 import com.mrathena.concurrent.tool.ThreadKit;
 
-public class ExchangerUsage {
+public class ExchangerDemo {
 
 	public static void main(String[] args) {
 		Exchanger<Object> exchanger = new Exchanger<>();

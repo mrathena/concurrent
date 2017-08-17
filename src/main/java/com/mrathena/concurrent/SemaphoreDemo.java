@@ -1,11 +1,11 @@
-package com.mrathena.concurrent.basic;
+package com.mrathena.concurrent;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 import com.mrathena.concurrent.tool.ThreadKit;
 
-public class SemaphoreUsage {
+public class SemaphoreDemo {
 
 	// 计数信号量由一个指定数量的 "许可" 初始化。每调用一次 acquire()，一个许可会被调用线程取走。
 	// 每调用一次 release()，一个许可会被返还给信号量。因此，在没有任何 release() 调用时，

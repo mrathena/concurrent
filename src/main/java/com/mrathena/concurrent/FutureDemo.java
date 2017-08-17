@@ -1,4 +1,4 @@
-package com.mrathena.concurrent.Future;
+package com.mrathena.concurrent;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -37,15 +37,15 @@ public class FutureDemo {
 	}
 
 	public static Future<String> doSomething2() {
-		ExecutorService poll = Executors.newSingleThreadExecutor();
-		Future<String> future = poll.submit(new Callable<String>() {
+		ExecutorService executor = Executors.newSingleThreadExecutor();
+		Future<String> future = executor.submit(new Callable<String>() {
 			@Override
 			public String call() throws Exception {
 				ThreadKit.sleep(3000);// 假设这个方法的执行需要3000ms
 				return "success";
 			}
 		});
-		poll.shutdown();
+		executor.shutdown();
 		return future;
 	}
 

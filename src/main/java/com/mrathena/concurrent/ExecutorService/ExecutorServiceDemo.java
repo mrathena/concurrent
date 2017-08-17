@@ -13,10 +13,10 @@ public class ExecutorServiceDemo {
 
 	public static void main(String[] args) {
 		try {
-			ExecutorService poll = Executors.newSingleThreadExecutor();// 单线程
+			ExecutorService executor = Executors.newSingleThreadExecutor();// 单线程
 			
 			// execute(Runnable) without return
-			poll.execute(new Runnable() {
+			executor.execute(new Runnable() {
 				public void run() {
 					ThreadKit.sleep(1000);
 					System.out.println("Asynchronous task");
@@ -24,7 +24,7 @@ public class ExecutorServiceDemo {
 			});
 			
 			// submit(Runnable) with return null
-			Future future = poll.submit(new Runnable() {
+			Future future = executor.submit(new Runnable() {
 				@Override
 				public void run() {
 					ThreadKit.sleep(1000);
@@ -33,7 +33,7 @@ public class ExecutorServiceDemo {
 			System.out.println(future.get());
 			
 			// submit(Runnable, T的实例) with return T的实例
-			Future<String> future2 = poll.submit(new Runnable() {
+			Future<String> future2 = executor.submit(new Runnable() {
 				@Override
 				public void run() {
 					ThreadKit.sleep(1000);
@@ -43,7 +43,7 @@ public class ExecutorServiceDemo {
 			
 			
 			// submit(Callable<T>) with return Future<T>
-			Future<String> future3 = poll.submit(new Callable<String>() {
+			Future<String> future3 = executor.submit(new Callable<String>() {
 				@Override
 				public String call() throws Exception {
 					ThreadKit.sleep(1000);
@@ -77,11 +77,11 @@ public class ExecutorServiceDemo {
 			});
 			
 			// invokeAll(Collection<? extends Callable<T>>) with return List<Future<T>>
-			poll = Executors.newSingleThreadExecutor();// 单线程, 任务串行
-			poll = Executors.newFixedThreadPool(10);// 多线程, 任务并行, 执行时间短
+			executor = Executors.newSingleThreadExecutor();// 单线程, 任务串行
+			executor = Executors.newFixedThreadPool(10);// 多线程, 任务并行, 执行时间短
 			System.out.println("Tasks start");
 			long start = System.currentTimeMillis();
-			List<Future<String>> futures = poll.invokeAll(tasks);// 可以试试单/多两种ExecutorService的执行时间
+			List<Future<String>> futures = executor.invokeAll(tasks);// 可以试试单/多两种ExecutorService的执行时间
 			for (Future<String> item : futures) {
 				System.out.println(item.get());
 			}
@@ -89,14 +89,14 @@ public class ExecutorServiceDemo {
 			System.out.println("Tasks finished. Time " + (end - start) + "ms");
 			
 			// invokeAny(Collection<? extends Callable<T>>) with return T
-			poll = Executors.newFixedThreadPool(10);// 多线程, 任务并行, 执行时间短
+			executor = Executors.newFixedThreadPool(10);// 多线程, 任务并行, 执行时间短
 			System.out.println("Tasks start");
 			long start2 = System.currentTimeMillis();
-			String result = poll.invokeAny(tasks);// 可以试试单/多两种ExecutorService的执行时间
+			String result = executor.invokeAny(tasks);// 可以试试单/多两种ExecutorService的执行时间
 			long end2 = System.currentTimeMillis();
 			System.out.println(result + ". Time " + (end2 - start2) + "ms");
 			
-			poll.shutdown();
+			executor.shutdown();
 			// ExecutorService 并不会立即关闭，但它将不再接受新的任务，而且一旦所有线程都完成了当前任务的时候，
 			// ExecutorService 将会关闭。在 shutdown() 被调用之前所有提交给ExecutorService 的任务都被执行。
 //			poll.shutdownNow();

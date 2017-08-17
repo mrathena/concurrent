@@ -1,10 +1,10 @@
-package com.mrathena.concurrent.basic;
+package com.mrathena.concurrent;
 
 import java.util.concurrent.CountDownLatch;
 
 import com.mrathena.concurrent.tool.ThreadKit;
 
-public class CountDownLatchUsage {
+public class CountDownLatchDemo {
 
 	public static void main(String[] args) {
 		
