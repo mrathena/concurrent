@@ -1,4 +1,4 @@
-package com.mrathena.concurrent;
+package com.mrathena.concurrent.aid;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;

@@ -1,4 +1,4 @@
-package com.mrathena.concurrent.ExecutorService;
+package com.mrathena.concurrent.executor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,9 @@ import java.util.concurrent.Future;
 import com.mrathena.concurrent.tool.ThreadKit;
 
 public class ExecutorServiceDemo {
+	
+	// 接口: ExecutorService
+	// 方法: 
 
 	public static void main(String[] args) {
 		try {
@@ -24,6 +27,7 @@ public class ExecutorServiceDemo {
 			});
 			
 			// submit(Runnable) with return null
+			@SuppressWarnings("rawtypes")
 			Future future = executor.submit(new Runnable() {
 				@Override
 				public void run() {

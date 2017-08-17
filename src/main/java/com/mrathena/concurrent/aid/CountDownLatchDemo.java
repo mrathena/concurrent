@@ -1,4 +1,4 @@
-package com.mrathena.concurrent;
+package com.mrathena.concurrent.aid;
 
 import java.util.concurrent.CountDownLatch;
 
