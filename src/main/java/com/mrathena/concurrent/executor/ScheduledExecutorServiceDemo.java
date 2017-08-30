@@ -1,4 +1,4 @@
-package com.mrathena.concurrent.executor;
+package com.mrathena.concurrent.Executor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

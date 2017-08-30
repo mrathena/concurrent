@@ -1,4 +1,4 @@
-package com.mrathena.concurrent.aid;
+package com.mrathena.concurrent.Aid;
 
 import java.util.concurrent.Exchanger;
 
