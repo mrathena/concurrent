@@ -1,4 +1,4 @@
-package com.mrathena.concurrent.Executor;
+package com.mrathena.concurrent.executor;
 
 public class ExecutorDemo {
 	
